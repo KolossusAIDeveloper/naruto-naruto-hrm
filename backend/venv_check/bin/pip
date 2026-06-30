@@ -1,0 +1,8 @@
+#!/home/tathagat-raj/80f06bb9-d0a7-477e-a9ef-20747677e577/hrm/backend/venv_check/bin/python3
+# -*- coding: utf-8 -*-
+import re
+import sys
+from pip._internal.cli.main import main
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(main())
