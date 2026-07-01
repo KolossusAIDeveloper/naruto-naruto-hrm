@@ -29,7 +29,9 @@ COPY backend/ /app/backend/
 COPY --from=frontend-builder /app/frontend/build /app/frontend/build
 
 # Copy nginx and supervisor configs
-COPY nginx.conf /etc/nginx/sites-enabled/hrm
+COPY nginx.conf /etc/nginx/sites-available/hrm
+RUN rm -f /etc/nginx/sites-enabled/default && \
+    ln -s /etc/nginx/sites-available/hrm /etc/nginx/sites-enabled/hrm
 COPY supervisord.conf /etc/supervisor/conf.d/hrm.conf
 
 # Create media and static dirs
