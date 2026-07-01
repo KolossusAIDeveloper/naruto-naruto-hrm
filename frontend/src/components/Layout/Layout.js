@@ -48,12 +48,12 @@ export default function Layout() {
         flexDirection: 'column',
         position: 'fixed',
         top: 0,
-        left: sidebarOpen ? 0 : 'var(--sidebar-width)',
+        left: 0,
         height: '100vh',
         zIndex: 50,
         transition: 'left 0.3s',
       }}
-      className="sidebar"
+      className={`sidebar${sidebarOpen ? ' open' : ''}`}
       >
         {/* Logo */}
         <div style={{ padding: '20px 16px', borderBottom: '1px solid var(--border)' }}>
@@ -175,7 +175,8 @@ export default function Layout() {
 
       <style>{`
         @media (max-width: 768px) {
-          .sidebar { left: -var(--sidebar-width) !important; }
+          .sidebar { left: calc(var(--sidebar-width) * -1) !important; }
+          .sidebar.open { left: 0 !important; }
           .menu-btn { display: block !important; }
           div[style*="marginLeft: var(--sidebar-width)"] { margin-left: 0 !important; }
         }
