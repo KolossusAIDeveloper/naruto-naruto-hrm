@@ -15,6 +15,30 @@
   --danger: #ef4444;
   --info: #06b6d4;
   --sidebar-width: 260px;
+  --row-hover-bg: rgba(255,255,255,0.02);
+  --btn-secondary-hover-bg: #475569;
+  --scrollbar-thumb: #334155;
+}
+
+:root[data-theme="light"] {
+  --bg-primary: #fff7ed;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-hover: #ffedd5;
+  --border: #fed7aa;
+  --text-primary: #1c1917;
+  --text-secondary: #57534e;
+  --text-muted: #a8a29e;
+  --accent: #ea580c;
+  --accent-hover: #c2410c;
+  --accent-light: #fed7aa;
+  --success: #059669;
+  --warning: #d97706;
+  --danger: #dc2626;
+  --info: #0891b2;
+  --row-hover-bg: rgba(234,88,12,0.04);
+  --btn-secondary-hover-bg: #fed7aa;
+  --scrollbar-thumb: #fdba74;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -38,7 +62,7 @@ input, select, textarea {
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg-primary); }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
 
 /* Utility classes */
 .flex { display: flex; }
@@ -103,7 +127,7 @@ input, select, textarea {
   background: var(--bg-hover);
   color: var(--text-primary);
 }
-.btn-secondary:hover { background: #475569; }
+.btn-secondary:hover { background: var(--btn-secondary-hover-bg); }
 
 .btn-danger {
   background: var(--danger);
@@ -179,7 +203,7 @@ td {
   border-bottom: 1px solid var(--border);
   color: var(--text-primary);
 }
-tr:hover td { background: rgba(255,255,255,0.02); }
+tr:hover td { background: var(--row-hover-bg); }
 tr:last-child td { border-bottom: none; }
 
 /* Badges */

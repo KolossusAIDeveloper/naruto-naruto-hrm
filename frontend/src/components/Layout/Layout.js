@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { useTheme } from '../../context/ThemeContext';
 import toast from 'react-hot-toast';
 
 const navItems = [
@@ -16,6 +17,7 @@ const navItems = [
 
 export default function Layout() {
   const { user, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -158,6 +160,25 @@ export default function Layout() {
             <div style={{ fontSize: 13, color: 'var(--text-muted)' }}>
               Welcome, <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{user?.full_name || user?.username}</span>
             </div>
+            {/* Theme toggle */}
+            <button
+              onClick={toggleTheme}
+              title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              style={{
+                width: 36, height: 36,
+                borderRadius: '50%',
+                border: '1px solid var(--border)',
+                background: 'var(--bg-hover)',
+                color: 'var(--text-primary)',
+                fontSize: 16,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                flexShrink: 0,
+              }}
+            >
+              {theme === 'dark' ? '☀️' : '🌙'}
+            </button>
             <div style={{
               width: 32, height: 32, borderRadius: '50%',
               background: 'linear-gradient(135deg, var(--accent), #7c3aed)',
